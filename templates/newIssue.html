@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+    <body>
+        <P>Hello {{statement}}</P>
+        <form action="/addNewTask" method = "POST"> <!--When Submit is PRessed a post request is sent-->
+            <p>Email <input type = "email" name = "email" /></p>
+            <p>Name of Person <input type = "text" name = "personName" /></p>
+            <p>Mission<input type = "text" name = "mission" /></p>
+
+            <p>Hours for Task <input type = "number" name = "alloatedTime" /></p>
+
+            
+            <p><input type = "submit" value = "add this email to the list" /></p>
+
+        </form>
+    </body>
+    </html>
