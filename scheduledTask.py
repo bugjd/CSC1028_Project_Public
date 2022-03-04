@@ -15,7 +15,7 @@ for people in json_dict:
     if theCurrentTime > (
             datetime.datetime.strptime((people["date"]), "%d/%m/%Y, %H:%M:%S") + timedelta(hours=people["hourstodo"])):
         # line above ^ once a certain amount people["hourstodo"] of hours has passed since the date was inputted
-       communicationObject.send_email([people["email"]], people["name"], people["item"],
+        communicationObject.send_email([people["email"]], people["name"], people["item"],
                                        people["uuid"])  # Conditon has been met for email notfication to be sent.
         print(people["date"], " with ", people["hourstodo"])
     else:
