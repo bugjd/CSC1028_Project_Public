@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Blog Post - Help to Build a future without management</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<header class="blog-header py-3">
+    <div class="row flex-nowrap justify-content-between align-items-center">
+        <div class="col-4 pt-1">
+            <a class="link-secondary" href="https://github.com/bugjd/"><svg xmlns="http://www.w3.org/2000/svg"
+                    width="16" height="16" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16">
+                    <path
+                        d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
+                </svg></a>
+            <a class="link-secondary" href="https://twitter.com/jackkdelaney"><svg
+                    xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-twitter" viewBox="0 0 16 16">
+                    <path
+                        d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z" />
+                </svg></a>
+        </div>
+        <div class="col-4 text-center">
+            <h1>Jack Delaney</h1>
+        </div>
+        <div class="col-4 d-flex justify-content-end align-items-center">
+            <a class="btn btn-sm btn-outline-secondary" href="https://github.com/bugjd/CSC1028_Project_Public">View the GitHub Repository </a>
+        </div>
+    </div>
+</header>
+<div class="container">
+<h1 id="help-to-build-a-future-without-management">Want to Help to Build a future without management?</h1>
+</br>
+
+<p><img src="img/frontPicture.jpg" alt="Photo by Jason Leung from &quot;Unsplash&quot; "></p>
+<p><em>Photo of WALL•E by <a href="https://unsplash.com/@ninjason?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Jason Leung</a> on <a href="https://unsplash.com/s/photos/robot?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></em></p>
+<h2 id="introduction">Introduction</h2>
+<p>Wouldn't you love to live in a society where there is no need for management or hierarchy with peers simply being able to work in harmony together? This does indeed sound like a utopia but in this guide, I will be introducing you to the world of the Agile software development human program, which helps automate the agile software development process by allowing four students to work on a project without any intervention of a superior. </p>
+<p>Through this blog post, I will be introducing you to the human project, its multiple parts and how <strong>you</strong> can get involved in improving the future of humanity.</p>
+<h3 id="learning-objectives">Learning Objectives</h3>
+<p>In this blog post you will learn:</p>
+<ul>
+<li>What this human project is about and how it benefits society</li>
+<li>How to Set up the Enviornment to Work on making the human program.</li>
+<li>Knowledge of the current state of the human program</li>
+<li>How to become involved in making the human program</li>
+<li>Understanding the tests</li>
+</ul>
+<h3 id="say-hello-to-the-human-program">Say hello to the human program.</h3>
+
+<p>The goal of this human program is to allow a group of people that have no experience working in a group in a software development project using the agile methodology to be able to undertake their project without the need for a human manager or a team leader</p>
+<p>This will be possible through the human program effectively acting as the management of the project, and will '<em>order</em>' the team members to do work.</p>
+<p>Although this human program is aimed at beginners to the world of agile software development process, the dream scenario is that overtime it will be able to be used by a large array of people such as a group of people, equal in rank not wanting any person to lead them or companies wanting to reduce their middle management salary bill.</p>
+<h3 id="what-is-a-human-program">What is a human program?</h3>
+<p>A human program is a computer program that replaces work previously done by humans whilst still using humans to undertake certain tasks on behalf of the program. For example, our human program takes upon the work usually done by the management whilst still relying on the other team members to undertake the work.</p>
+<h3 id="why-should-you-help-with-this">Why should you help with this ?</h3>
+<p>This human program hopes to help revolutionise the industry through the automation of a key, expensive component of all companies that have historically not been dramatically impacted through technological advances.</p>
+<p>Through helping shape this human programe you will</p>
+<ul>
+<li>Become part of community of like minded people wanting to make a significant change to how society operates,</li>
+<li>Learn much more about how Git works.</li>
+<li>Become a better programmer through developing lots of code.</li>
+</ul>
+<h3 id="summary-of-what-has-been-currently-down">Summary of what has been currently down.</h3>
+<p>Currently the plans for the functionality of the human programme are split into three different libraries that I will go into detail below.</p>
+<p>Each of these libraries are at a different phase in their initial development cycle. I will explain what they do so far and what they will do at a later stage below.</p>
+<h3 id="what-is-their-left-to-do">What is there left to do?</h3>
+<p> There is still lots to do before this human program is ready to be used in a real-world environment. Currently, only 1 of the 3 libraries is near completion. With your help together we can make this human program.</p>
+<p>A detailed list of what is left to do for each library will be present in each of the libraries.</p>
+<h3 id="what-i-need-to-help-improve-this-program">What I need to help improve this program?</h3>
+<p>To follow along with this blog post you will need:</p>
+<ul>
+<li>A computer</li>
+<li>An internet connection</li>
+<li>Pycharm (If you do not have it I will show you how to get it later)</li>
+</ul>
+<p>If you don't have these, don't worry, just read along with us and implement later.</p>
+<h3 id="optional-requirnments">Optional Requirnments</h3>
+<p>The following are not absolutely necessary but can be useful.</p>
+<ul>
+<li>A github account (if you want to contribtute to the code base)</li>
+<li>A python anywhere account (if you want to host your instance of the human program online)</li>
+</ul>
+<p>We will explain how you can get these later on if you already don't have them.</p>
+
+
+<h2 id="libraries">Libraries</h2>
+<p>This project is composed of three librarys that each take a different function within the human program.</p>
+<ol>
+	<li>The onboarding library is welcoming teams and people to the human program</li>
+
+	<li>The communication library sends information to the team members in the form of emails and text messages</li>
+	<li>The Integration library uses GET and POST requests to retrieve and send information relating to GitHub issues between the human program and GitHub.</li>
+</ol>
+<p>Each of these libraries is currently at a different stage of development which I will explain below. I will also explain what a library is, what the libraries currently do and what we plan they will do in the future.</p>
+<h3 id="what-is-a-library">What is a Library?</h3>
+<p>Just to avoid confusion these libraries are human program libraries, not python libraries (Although in this project most of the functionality will be handled by python classes with the same name as our libraries), they are a collection of code that I have created that undertakes a certain function within this project.</p>
+<p>The Development of this library's are broken up into stages, mirroring the base agile software development process, I will explain this in greater detail later:</p>
+<ol>
+<li>Creating a Demo of what your making with a prototyping tool such as <a href="https://help.figma.com/hc/en-us/articles/360040314193-Guide-to-prototyping-in-Figma">Figma</a>,<a href="https://www.adobe.com/products/xd/learn/prototype.html">Adobe XD</a> or <a href="https://keynotopia.com/guides-ppt/#:~:text=Open%20the%20PowerPoint%20Prototyping%20Bundle,and%20type%20the%20new%20label.">Power Point</a>. I used Power point to create my demo.</li>
+<li>Adding Details to the powerpoints's such as what the library does, such as what information is acceptable.</li>
+<li>Building a Test Plan based upon what problems you think could occur.</li>
+<li>Build a basic implementation of the project</li>
+<li>Build a simulated interface and discuss it with a user group.</li>
+<li>Show the simulation to real users of the program.</li>
+<li>Develop the actual project and publish it</li>
+</ol>
+<h3 id="python-interfaces">Python Interfaces</h2>
+<p>To provide a blue print to you, the future developers of this project of what I think the project is currently like I decided to implement <a href="https://realpython.com/python-interface/">Python Interfaces</a>. The interfaces are highly commented methods that will provide you with an invauable structure if you want to get on board as a member of the commmunity that should help you become familar with how the human program works as soon as possible. By writing the interfaces I hope I have saved you, the person who folows after me a bit of time. I encourage you to write interfaces for any future librarys being written or even new functions for current librarys that you simply don't have the time to implement.</p>
+
+
+
+<h2 id="onboarding-library">Onboarding Library</h2>
+<p>The Purpose of the onboarding library is to welcome new users to the human program, to make them feel at home whilst we take down their details. A great onboarding experience allows a person that does not know much about a certain matter to be able to get it set up. Below is the initial design created whilst I was creating the prototype in PowerPoint.</p>
+<p>I plan that the onboarding library will allow people:</p>
+<ul>
+<li>Create Teams</li>
+<li>Learn more about the human program.</li>
+</ul>
+<p>The second link on the above page giving people more information about the human program is not currently planned (If you want you can create a GitHub issue with your plan for informing the user about our human program) but for now, I will show you the second stage of this process, creating the team.</p>
+<p>In the second step of the onboarding process we get the details from the user about the team members' names and Github names. We then allow them to submit this.</p>
+<p>After this the onboarding library will ask the communication library to email a team member asking them to set up a doodle and google form and then provide them to the human program. This email will contain a link to the third step of this process. This email will tell people how to create a free doodle poll and a free google form.</p>
+<p>The Interface (Blue print for the class) for this library is below:</p>
+<pre class="hljs"><code><div><span class="hljs-comment"># Python Interface</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">OnboardLibraryInterface</span>:</span>
+    <span class="hljs-string">"""Creation of New Groups and Teams, Providing the onboaridng process"""</span>
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">create_team</span><span class="hljs-params">(self, team_name: str)</span> -&gt; int:</span>
+        <span class="hljs-string">"""A method to allow for the creation of the team. It will ask for a team name and provide the team ID
+        number. If the team name is invalid a negative int will be returned. this method will add a team to the JSON
+        file. """</span>
+
+        <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">check_team_name</span><span class="hljs-params">()</span> -&gt; bool:</span>
+            <span class="hljs-string">"""A Method to check if a team name is valid nested function as will only be used when creating a team."""</span>
+            <span class="hljs-keyword">if</span> len(team_name) &lt;= <span class="hljs-number">0</span> <span class="hljs-keyword">or</span> len(team_name) &gt; <span class="hljs-number">30</span>:
+                <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span>
+            <span class="hljs-keyword">else</span>:
+                <span class="hljs-keyword">return</span> <span class="hljs-literal">True</span>
+
+        <span class="hljs-keyword">pass</span>
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">create_person</span><span class="hljs-params">(self, person_name: str, person_email: str, person_github_str)</span> -&gt; int:</span>
+        <span class="hljs-string">"""A method to allow for the creation of a person and add them to the JSON File. If any details are incorrect
+        an negative int will be provided otherwise their id will be returned """</span>
+
+        <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">check_github</span><span class="hljs-params">()</span> -&gt; bool:</span>
+            <span class="hljs-string">"""Will use GitHub API to make sure person exists on github """</span>
+            <span class="hljs-keyword">pass</span>
+
+        <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">check_person_name</span><span class="hljs-params">()</span> -&gt; bool:</span>
+            <span class="hljs-string">"""A Method to check if a person name is valid nested function as will only be used when creating a
+            person. """</span>
+            <span class="hljs-keyword">if</span> len(person_name) &lt;= <span class="hljs-number">0</span>:
+                <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span>
+            <span class="hljs-keyword">else</span>:
+                <span class="hljs-keyword">return</span> <span class="hljs-literal">True</span>
+
+        <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">check_email</span><span class="hljs-params">()</span> -&gt; bool:</span>
+            <span class="hljs-string">"""Will check if email is valid up to due if you want a basic implemntation or a more advanced such as
+            checking website DNS to makesure website exists """</span>
+            <span class="hljs-keyword">pass</span>
+
+        <span class="hljs-keyword">pass</span>
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">add_person_to_team</span><span class="hljs-params">(self, person_id: int, team_id: int)</span> -&gt; bool:</span>
+        <span class="hljs-string">"""A method to allow a person to be added to a team. Will use check_team_valid and check_person_valid to
+        check they exist. Will return true if able to add person """</span>
+        <span class="hljs-keyword">pass</span>
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">remove_person_to_team</span><span class="hljs-params">(self, person_id: int, team_id: int)</span> -&gt; bool:</span>
+        <span class="hljs-string">"""A method to allow a person to be removed to a team. Will use check_team_valid and check_person_valid to
+        check they exist. Will return true if able to removed person """</span>
+        <span class="hljs-keyword">pass</span>
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">check_team_valid</span><span class="hljs-params">(self, team_id: int)</span> -&gt; bool:</span>
+        <span class="hljs-string">"""A method to check if a team is valid"""</span>
+        <span class="hljs-keyword">pass</span>
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">check_person_valid</span><span class="hljs-params">(self, person_id: int)</span> -&gt; bool:</span>
+        <span class="hljs-string">"""A method to check if a person is valid"""</span>
+        <span class="hljs-keyword">pass</span>
+</div></code></pre>
+
+
+
+<h3 id="communication-library">Communication Library</h3>
+<p>The most important role of a human manager is to have a good level of communication with the members of their team, unfortunately due to the fact that the human program is a computer program and not a person this would normally be a challenge. But in this human program, we have built a community library that will be able to communicate with the users.</p>
+<p>The communication library is only responsible for one-way communication with the user, although the communication library may send links in certain notfications it is upto the</p>
+<blockquote>
+<p><strong>Important Note</strong>: On the copy of human program on the GitHub repository the username and password for the SMTP email function has been removed for security reasons. If you don't have a gmail account follow <a href="https://support.google.com/accounts/answer/27441?hl=en">this guide</a> on how to create one. By default SMTP is not enabled on gmail, to enable it follow <a href="https://support.google.com/mail/answer/7126229?hl=en-GB#zippy=%2Cstep-check-that-imap-is-turned-on%2Cstep-change-smtp-other-settings-in-your-email-client">step 2 of this guide</a></p>
+</blockquote>
+<h4 id="what-has-been-done-so-far-with-communication-library">What has been done so far with Communication Library</h4>
+<p>So far we have completed both the first and second phase I described above where we have been able to get the most important functionality of the library working (sending the communication's through email).</p>
+<h4 id="what-still-needs-done-to-the-communication-library">What still needs done to the Communication Library</h4>
+<ol>
+<li>Allow Communication's to be sent through an alternate way (We will do this together later on)</li>
+<li>work with the community to remove any bugs.</li>
+</ol>
+The Interface (Blue print for the class) for this library is below:</p>
+<pre class="hljs"><code><div><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">IntegrationLibraryInterface</span>:</span>
+    <span class="hljs-string">"""A blue print on how to intergrate with github and I ideas on how to intergrate with others in the future"""</span>
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">make_github_issue</span><span class="hljs-params">(self, title: str, body: str, assignee: str, milestone: str,
+                          labels: [str])</span> -&gt; int:</span>
+        <span class="hljs-string">"""A method that will allow github issues to be created by the human program. Returns issue id or -1 if
+        invalid """</span>
+        <span class="hljs-keyword">pass</span>
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">read_github_issue_assignee</span><span class="hljs-params">(self, issue_id: int)</span> -&gt; str:</span>
+        <span class="hljs-string">"""Reads the  issue and returns the current assignee"""</span>
+        <span class="hljs-keyword">pass</span>
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">read_github_issue_labels</span><span class="hljs-params">(self, issue_id: int)</span> -&gt; [str]:</span>
+        <span class="hljs-string">"""Reads the  issue and returns the current labels"""</span>
+        <span class="hljs-keyword">pass</span>
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">read_github_issue_milestone</span><span class="hljs-params">(self, issue_id: int)</span> -&gt; str:</span>
+        <span class="hljs-string">"""Reads the issue and returns the current milestone"""</span>
+        <span class="hljs-keyword">pass</span>
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">read_github_issue_title</span><span class="hljs-params">(self, issue_id: int)</span> -&gt; str:</span>
+        <span class="hljs-string">"""Reads the issue and returns the current title"""</span>
+        <span class="hljs-keyword">pass</span>
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">read_github_issue_body</span><span class="hljs-params">(self, issue_id: int)</span> -&gt; str:</span>
+        <span class="hljs-string">"""Reads the issue and returns the current body"""</span>
+        <span class="hljs-keyword">pass</span>
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">amend_github_issue</span><span class="hljs-params">(self, title: str, body: str, assignee: str, milestone: str,
+                           labels: [str], issue_id: int)</span> -&gt; int:</span>
+        <span class="hljs-string">"""A method to allow issues to be ammended"""</span>
+        <span class="hljs-keyword">pass</span>
+</div></code></pre>
+
+
+
+
+
+
+<h3 id="the-intergrations-library">The intergrations Library</h3>
+<p>The integration library focuses on integrations with other tools such as GitHub, google sheets and doodle. This library is currently in the middle of the second phase - developing the code. The integration Library handles tasks in this human program.</p>
+<p>One of the Integrations of this library will be to connect to the <a href="https://docs.github.com/en/rest/reference/issues">GitHub Issues API</a> to create,read and amend issues. A Github issue will be equal to a task on our system. I have been doing some research and found this guide on the <a href="https://www.softwaretestinghelp.com/github-rest-api-tutorial/">github REST API</a> very useful.</p>
+<p>This library will also have an integration with Doodle. Doodle does not have an easily accessible API but through research, I found a <a href="https://github.com/xperseguers/doodle_client">GitHub repository</a> that provides this functionality. I have yet to test this API but it seems to be used by a large educational organisation in the USA.</p>
+<p>We will also have an integration with google forms. This part of the project has not been implemented or researched at all outside of the exploratory process to check if it is possible. <a href="https://developers.google.com/forms/api">Google provides documentation on the Forms API here</a>.</p>
+<p>Currently I have implemented temporary code that allowed for tasks to be created locally without adding them to GitHub. The communication library sends out a notification when the task needs to be done and the user then sends a response by clicking a URL.</p>
+<h4 id="what-has-been-done-so-far-with-intergrations-library">What has been done so far with intergrations Library</h4>
+<p>Currently the first phase has been complete for this library along following in the second phase</p>
+<ul>
+<li>form allowing tasks to be created through the human program.</li>
+<li>code that the human program to the JSON file</li>
+<li>A class that has non-implemented methods ready for connection to GitHub</li>
+</ul>
+<h4 id="what-still-needs-done-to-the-intergrations-library">What still needs done to the intergrations Library</h4>
+<ul>
+<li>Actual GitHub Intergration</li>
+<li>Removal of the temporary code</li>
+<li>Adding google forms intergration</li>
+<li>adding doodle API.</li>
+</ul>
+<p>
+	The Interface (Blue print for the class) for this library is below:</p>
+	<pre class="hljs"><code><div><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">IntegrationLibraryInterface</span>:</span>
+		<span class="hljs-string">"""A blue print on how to intergrate with github and I ideas on how to intergrate with others in the future"""</span>
+	
+		<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">make_github_issue</span><span class="hljs-params">(self, title: str, body: str, assignee: str, milestone: str,
+							  labels: [str])</span> -&gt; int:</span>
+			<span class="hljs-string">"""A method that will allow github issues to be created by the human program. Returns issue id or -1 if
+			invalid """</span>
+			<span class="hljs-keyword">pass</span>
+	
+		<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">read_github_issue_assignee</span><span class="hljs-params">(self, issue_id: int)</span> -&gt; str:</span>
+			<span class="hljs-string">"""Reads the  issue and returns the current assignee"""</span>
+			<span class="hljs-keyword">pass</span>
+	
+		<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">read_github_issue_labels</span><span class="hljs-params">(self, issue_id: int)</span> -&gt; [str]:</span>
+			<span class="hljs-string">"""Reads the  issue and returns the current labels"""</span>
+			<span class="hljs-keyword">pass</span>
+	
+		<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">read_github_issue_milestone</span><span class="hljs-params">(self, issue_id: int)</span> -&gt; str:</span>
+			<span class="hljs-string">"""Reads the issue and returns the current milestone"""</span>
+			<span class="hljs-keyword">pass</span>
+	
+		<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">read_github_issue_title</span><span class="hljs-params">(self, issue_id: int)</span> -&gt; str:</span>
+			<span class="hljs-string">"""Reads the issue and returns the current title"""</span>
+			<span class="hljs-keyword">pass</span>
+	
+		<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">read_github_issue_body</span><span class="hljs-params">(self, issue_id: int)</span> -&gt; str:</span>
+			<span class="hljs-string">"""Reads the issue and returns the current body"""</span>
+			<span class="hljs-keyword">pass</span>
+	
+		<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">amend_github_issue</span><span class="hljs-params">(self, title: str, body: str, assignee: str, milestone: str,
+							   labels: [str], issue_id: int)</span> -&gt; int:</span>
+			<span class="hljs-string">"""A method to allow issues to be ammended"""</span>
+			<span class="hljs-keyword">pass</span>
+	</div></code></pre>
+
+	<h2 id="how-to-design-a-human-program">How to design a human program ?</h2>
+	<p>We will use the stages that we have talked about above to create phases within the human program.</p>
+	<h3 id="creating-the-prototype">Creating the prototype</h3>
+	<p>As I just talked about you can use either  <a href="https://help.figma.com/hc/en-us/articles/360040314193-Guide-to-prototyping-in-Figma">Figma</a>,<a href="https://www.adobe.com/products/xd/learn/prototype.html">Adobe XD</a> or <a href="https://keynotopia.com/guides-ppt/#:~:text=Open%20the%20PowerPoint%20Prototyping%20Bundle,and%20type%20the%20new%20label.">Power Point</a> to create this prototype, you can even use pen and paper if your prefer. I will be explaining this to you using power point due to it most people already having it on their computer.</p>
+	<p>First we will be designing the prototype using through <a href="https://www.howtogeek.com/428396/how-to-draw-and-edit-a-freeform-shape-in-microsoft-powerpoint/#:~:text=Draw%20a%20Shape%20in%20PowerPoint&amp;text=To%20do%20this%2C%20head%20over,and%20scribble%20(right)%20tools.">using boxes</a> in powerpoint.</p>
+	<p>Make a base design for what you want your prototype to look like alongside what features it will have (for example my example below, for the first page of a web site prototype for the onboarding process there is two hyperlink boxes).</p>
+	<p><img src="img/onboarding/step1.jpg" alt="Slide showing the prootype of the program" title="A Power Point Example"></p>
+	<p>Create a prototype for every page / feature the human program will have.For features that don't have an outwards apperance such as an intergration between an API and a human program write a bullet point powerpoint slide on its behaviour.</p>
+	<h3 id="adding-details-to-the-powerpointss-such-as-what-the-library-does-such-as-what-information-is-acceptable">Adding Details to the powerpoints's such as what the library does, such as what information is acceptable.</h3>
+	<p>At stage we add additional information to the powerpoints (Either to the <a href="https://support.microsoft.com/en-us/office/add-speaker-notes-to-your-slides-26985155-35f5-45ba-812b-e1bd3c48928e#OfficeVersion=macOS">Notes section of the power power</a> or to a companion powerpoint). Additonal Information includes</p>
+	<ul>
+	<li>How you expect a certain page/ feature of your project to behave.</li>
+	<li>How will the project behave depending on certain inputs which is very important for a project such as this human project.</li>
+	</ul>
+	<p>For example, when creating new people in this program we need to make sure they have a valid <em>GitHub name</em>. To ensure this we will undertake checks as I talked about above. In the powerpoint we need to provide details on whats happens when someone has an invalid or valid github name and what happens when none is provided, which is shown in my snippet below.</p>
+	<pre class="hljs"><code><div>If GitHub Name is Valid:
+		-&gt; Allow Creation of Account
+	If GitHub Name is Not Provided:
+		-&gt; Stop Creation of Account, Ask user to input again.
+	If GithUb Name is Wrong:
+		-&gt; Inform them that no GitHub person exists with this name and ask them to input again.
+	</div></code></pre>
+	<h3 id="building-the-test-plan">Building the Test Plan</h3>
+	<p>Now that we have designed prototypes it is now time to design our test plan. <a href="https://dev.to/flippedcoding/4-reasons-you-should-write-tests-first-47oa">Many people are of the view that it is better to write tests before coding</a> I agree with them as it allows us to focus on thinking on how to solve our problem and what are acceptable solutions to that problem as opposed to spending a huge amount of time making a solution, which might not even be correct.</p>
+	<h4 id="what-are-tests">What are tests</h4>
+	<p>Tests are a way, we as software developers can make sure are code is working as we <em><strong>expect</strong></em> it to work.</p>
+	<p>In this human program project, as with most other software development projects there will be two different types of tests.</p>
+	<ul>
+	<li>Automated Tests
+	<ul>
+	<li>Tests that are written by us that the computer can run automatically.</li>
+	<li>Will usually be small 'units' of code testing one small function of the code.</li>
+	<li>These tested are very quick to run and are great in collaborative projects</li>
+	</ul>
+	</li>
+	<li>Manual Tests
+	<ul>
+	<li>Manual tests are written by us for them to be tested by either us or a tester.</li>
+	<li>They are usually quicker to get written than Automated Tests, and allow us to undertake effective integration testing.</li>
+	</ul>
+	</li>
+	</ul>
+	<p>A great tutorial on testing is this one by <a href="https://realpython.com/python-testing/#automated-vs-manual-testing">real python</a> which explains the difference between these two types of test and also talks about the difference between Intergration and Unit Testing (Integration tested are when multiple things are tested together, unit testing only tests one thing at a time.)</p>
+	<h4 id="lets-think-about-tests">Lets think about Tests</h4>
+	<p>It it time to think about tests that we might want to right for the human program. We want <a href="https://www.infoworld.com/article/2072239/what-makes-a-test-suite-good-.html">our tests</a> to</p>
+	<ul>
+	<li>Cover as much of the project as possible.</li>
+	<li>Cover as many different posslbiity's as possible.
+	<ul>
+	<li>For example if we we're writing a test that make sure a password was not too long we would write a test that was valid, valid at the border ,invalid and finally invalid at the border to ensure that every possibility is being looked at.</li>
+	</ul>
+	</li>
+	<li>Being robust in that changes in the code base in the future should not make a test provide false-positives.</li>
+	</ul>
+	<p>In this blog post we will be writing two tests.</p>
+	<p>The First Test will be a <em>automated unit test</em> that will make sure people cannot insert invalid phone number into the system in the communication library.</p>
+	<p>The Second test will be a manual test to check that the link on the onboarding flask web page in the onboarding brings them to the correct place. This test will be undertake manually by either the developer or a tester.</p>
+	<h4 id="designing-your-test-plan">Designing your test plan</h4>
+	<p>I used excel to make my test plan. <a href="https://www.youtube.com/watch?v=oa4rBegUmTU">This YouTube</a> shows how to design a simple test case similar to the one I am demonstrating below. At this point we will not have any actual results due to the code not being written yet so leave that blank and set the status to 'Not yet implemented'</p>
+	<p>Below are what the tests should look like in their respective homes. In my project's I usually create a convention of how I name my tests for example the <strong>first</strong> <em><strong>u</strong>nit test</em> I writing relating to the <em><strong>com</strong>munication Library</em> I call U_COM_1</p>
+	<p>With manual tests I undertake a similar approach to naming of manual tests, for example my <strong>first</strong> <em><strong>m</strong>anual</em> <em><strong>on</strong>boarding</em> test is called M_ON_1</p>
+	<p><strong>Automated Unit Test Sheet</strong></p>
+	<table>
+	<thead>
+	<tr>
+	<th>Test Case</th>
+	<th>Objective</th>
+	<th>Data Being Tested</th>
+	<th>Expected Result</th>
+	<th>Actual Result</th>
+	<th>Status</th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr>
+	<td>U_COM_1</td>
+	<td>Testing what happens when someone enters an invalid phone number</td>
+	<td>Invalid Phone Number: 297269000, Valid Coutntry Code:44,valid message : hello</td>
+	<td>-1</td>
+	<td>Not yet implemented</td>
+	<td>Not yet implemented</td>
+	</tr>
+	</tbody>
+	</table>
+	<p><strong>Manual Test Sheet</strong></p>
+	<table>
+	<thead>
+	<tr>
+	<th>Test Case</th>
+	<th>Objective</th>
+	<th>Data Being Tested</th>
+	<th>Expected Result</th>
+	<th>Actual Result</th>
+	<th>Status</th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr>
+	<td>M_ON_1</td>
+	<td>A test to make sure the links on the onboarding page bring you to the write place</td>
+	<td>A initialised onboarding module running on a flask web sever</td>
+	<td>Not yet implemented</td>
+	<td>Not yet implemented</td>
+	<td>Not yet implemented</td>
+	</tr>
+	</tbody>
+	</table>
+	<h4 id="writing-test">Writing Test</h4>
+	<p>Now that we have planned our tests it is now time to write them. I will show you I wrote the unit test for <code>U_COM_1</code> and how I wrote the test plan for <code>M_ON_1</code> below.</p>
+	<h5 id="writing-a-unit-test">Writing a Unit Test</h5>
+	<p>When writing my unit tests I followed this <a href="https://realpython.com/python-testing/#how-to-structure-a-simple-test">real python guide on unit tests</a> it provides great detail on what a unit test needs. As you can see below from the commented code this test provides an invalid phone number to the method and checks to make sure the actual answer is equal to the expected answer. As I have only made the interface for this method (The Code has not been implemented yet.) I have commented out the code calling the communication library until you or another member of the community has got that code running.</p>
+	<pre class="hljs"><code><div><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyTestCase</span><span class="hljs-params">(unittest.TestCase)</span>:</span>
+		<span class="hljs-string">"""Testing the communication library"""</span>
+	
+		<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">test_send_text_invalid_phoneNumber</span><span class="hljs-params">(self)</span>:</span> <span class="hljs-comment"># U_COM_1</span>
+			<span class="hljs-string">"""Testing what happens when someone enters an invalid phone number"""</span>
+			<span class="hljs-comment"># tester = Communication(sent_from, password, url)</span>
+			phoneNumberINVALID = int(<span class="hljs-number">297269000</span>)
+			countryCodeVALID = <span class="hljs-number">44</span>
+			message = <span class="hljs-string">"hello"</span>
+			<span class="hljs-comment"># acutal_answer = send_text(phoneNumberINVALID, countryCodeVALID, message)</span>
+	
+			expected_answer = <span class="hljs-number">-1.0</span>
+			temp_actual_answer = <span class="hljs-number">-1.0</span>
+	
+			self.assertEqual(expected_answer, temp_actual_answer)  <span class="hljs-comment"># change to acutal_answer when the method is created in Communication</span>
+	</div></code></pre>
+	<h4 id="writing-the-test-plan-for-a-manual-test">Writing the test plan for a manual test.</h4>
+	<p>For my manual tests I add an additional column into excel called 'Notes'. In these 'Notes' I provide steps on how to undertake the test. For example, in <code>M_ON_1</code> test notes I have told the user to go to the onboarding page of the website (step 1), and click all the buttons to make sure they go to the place that they're title to go to (step 2). I also inform the tester of the condition needed for this test to pass (all the links working properly)</p>
+	<h4> Commenting Tests </h4>
+	<p>It is vital that all automated tests are commented as much as possible to make it as easy as possible for other members of the community to understand what the test is about . Always write the test case number and provide a short description does. It is also sometimes useful to add some additional details such as what are exterme valid data etc.</p>
+	<h2 id="build-a-basic-implementation-of-the-project">Build a basic implementation of the project</h2>
+	<p>The Next Stage of designing the project is to make a basic implemntation. <a href="tech.html">Click here</a> to acess the technical part of this blog post on how to get up the human programs enviornment and how to add new features to it.</p>
+	<h2 id="build-a-simulated-interface-and-discuss-it-with-a-user-group">Build a simulated interface and discuss it with a user group.</h2>
+	<p>The next stage will to improve upon the code already made and the power point to create a simulated interface (i.e a fully working demo of a small part of the program) and show this to a user group. The User group should ideally comprise of the target audience (in our case students who have never been invovled in managment of a agile project) to gain their views. Record these views and incorpate them in.</p>
+	<h2 id="show-the-simulation-to-real-users-of-the-program">Show the simulation to real users of the program</h2>
+	<p>For stage I would publish the simulation on to a forum like the <a href="https://www.reddit.com/r/opensource/">opensource subreddit</a> to try and get the views of a wider area of users, who will try your simulation in the real word. Record their feedback and resolve any issues you find.</p>
+	<h2 id="develop-the-actual-project-and-publish-it">Develop the actual project and publish it</h2>
+	<p>This is the final phase of the development process where we develop a fully working copy of the human program. After we finish development we will publish it online and then improve upon it as <a href="https://docs.github.com/en/issues/tracking-your-work-with-issues/creating-an-issue">more people open issues on it</a>.</p>
+	
+<h2 id="how-can-i-help-if-i-cant-programe">How can I help if I can't programe.</h2>
+<p>You can help even if your can program.</p>
+<ol>
+<li>Have any great ideas, create an issue on Github asking for a feature request</li>
+<li>Test the human programe and if you find any issues create a issue</li>
+</ol>
+<h2 id="ideas-for-features">Ideas for Features</h2>
+<p>On top of the already, non-implemented features that I have told you about above I have some other ideas for great features to add to the human program.</p>
+<ol>
+<li>Having an intergration with a Robot Phone operator such as <a href="https://robotalker.com/automated-call-api">Robottalker</a></li>
+<li>Create a new Library to allow the Product Owner to interact with the human program.</li>
+<li>Intergrate the human program with the stripe API to allow the human program to handle the billing and paying of the team members.</li>
+<li>Intergrate the human programme into a Chatbot/Discord Bot/Slack Bot to allow the team memmbers to talk with the human program through these methods and also get notfications through these mediums also.</li>
+</ol>
+<h2 id="what-if-this-human-program-project-does-not-have-an-active-community-on-github">What if this human program project does not have an active community on GitHub</h2>
+<p>If when your reading this blog post the human program does not have an activte community on GitHub, don't worry, you can build one.</p>
+<ol>
+<li>Write blog posts, similar to this blog post talking about how you have improved the human program.</li>
+<li>Write tweets on twitter asking people to help.</li>
+<li>Ask questions on a stackoverflow to try on your issues to try and get people engauged in the project.</li>
+</ol>
+<h2 id="how-to-create-a-github-issue">How to Create a GitHub issue</h2>
+<p>Follow this great <a href="https://docs.github.com/en/issues/tracking-your-work-with-issues/creating-an-issue">GitHub Doc</a> to create a GitHub issue.</p>
+<h2 id="refernces">Links to useful websites</h2>
+
+
+<a href="https://flask.palletsprojects.com/en/2.0.x/">https://flask.palletsprojects.com/en/2.0.x/</a>
+</br>
+<a href="https://www.educative.io/edpresso/a-simple-handy-guide-to-flask">https://www.educative.io/edpresso/a-simple-handy-guide-to-flask</a>
+</br>
+
+<a href="https://www.educative.io/edpresso/a-simple-handy-guide-to-flask">https://www.educative.io/edpresso/a-simple-handy-guide-to-flask/a>
+</br>
+
+    <a href="https://www.w3schools.com/python">https://www.w3schools.com/python</a>
+
+</div>
+<footer class="blog-footer">
+	<p>
+		This how to guide was written by Jack Delaney in 2022 for the CSC1028 module and published on the
+		30/03/2022. The source code for this project is on my Github.
+		</p>
+	</footer>
+</body>
+</html>

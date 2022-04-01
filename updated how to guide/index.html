@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>The How to Guide</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+<!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+
+<header class="blog-header py-3">
+    <div class="row flex-nowrap justify-content-between align-items-center">
+        <div class="col-4 pt-1">
+            <a class="link-secondary" href="https://github.com/bugjd/"><svg xmlns="http://www.w3.org/2000/svg"
+                    width="16" height="16" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16">
+                    <path
+                        d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
+                </svg></a>
+            <a class="link-secondary" href="https://twitter.com/jackkdelaney"><svg
+                    xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-twitter" viewBox="0 0 16 16">
+                    <path
+                        d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z" />
+                </svg></a>
+        </div>
+        <div class="col-4 text-center">
+            <h1>Jack Delaney</h1>
+        </div>
+        <div class="col-4 d-flex justify-content-end align-items-center">
+            <a class="btn btn-sm btn-outline-secondary" href="http://howtoguide2022.eu.pythonanywhere.com/">View
+                todo List on python anywhere</a>
+        </div>
+    </div>
+</header>
+<div class="container">
+
+<h1 id="making-a-start-on-flask-with-json-data-storage">Making a start on Flask with JSON Data Storage</h1>
+<h3 id="a-how-to-guide-exploring-the-wonderful-work-of-json-and-the-python-library-flask-by-creating-a-todo-list">A how to guide exploring the wonderful work of JSON and the Python Library Flask by creating a todo list.</h3>
+<h2 id="introduction">Introduction</h2>
+<h3 id="what-is-flask">What is Flask?</h3>
+<p>Flask is a Python Library (think of an HGV trailer) that extends the python language to allow us to create amazing websites. A python library contains a huge amount of functions that make our job as developers much simpler and the flask library, in particular, allows us, developers, to make great python websites that can be interactive without too many difficulties.
+</p>
+<h3 id="what-is-json">What is JSON?</h3>
+<p>JSON is a file format that we humans can read without the use of additional software. JSON is an industry-standard way of holding, sending and getting information. It is widely used in the realms of academia and data analysis and I believe that it is much more structured and standardised than its competitor the CSV File.
+</p>
+<h3 id="what-will-we-be-making">What will we be Making?</h3>
+<p>Today we will be making a todo list website which will:</p>
+<ol>
+<li>Allow users to add items to the list</li>
+<li>Allow users to delete items from the list</li>
+<li>Allow users to star items from the list</li>
+</ol>
+<h3 id="skill-level">What skill level do I need to have to be able to undertake this tutorial?</h3>
+<p>For this tutorial it is best if you have used Python before. A good understanding of html will also be beneficial.</p>
+<h3 id="learning-objectives">The Learning Objectives</h3>
+<p>In this how to guide you will learn how to:</p>
+<ul>
+<li>How to make a Flask Website</li>
+<li>How to read/write to a JSON File in Python</li>
+<li>Learn how POST Requests work</li>
+<li>Learn how to intergrate JSON with Flask</li>
+</ul>
+<h3 id="requirments">The Learning Requirments</h3>
+<ul>
+<li>A Computer</li>
+<li>PyCharm (I will show you how to get it below, tutorial was written with the professional version)</li>
+<li>A python anywhere account (later on, if you don't one you can just skip that step)</li>
+</ul>
+<h2 id="preparing-the-enviorment">Preparing the enviorment.</h2>
+<p>I would recommend using <a href="https://www.jetbrains.com/pycharm/download/">PyCharm</a> you should be able to do this on any version of PyCharm, as I am a student I have access to the Professional Version of the Software which I written this tutorial with but it should be quite similar in the Community Version).</p>
+<p>Once you have downloaded it and opened the software you will be brought to a page like this. Press new project.</p>
+<p><img src="img/stepa.png" alt="Image informs the user to Press the new project button" title="Step A"></p>
+<p>Once you do this a wizard will appear. select Flask from the menu on the side and make sure the base interpreter is set to Python 3. When your happy with the location press create.</p>
+<p><img src="img/stepb.png" alt="Image informs the user to ensure the base interpreter is python 3 and that they have selected flask from the side menu" title="Step B"></p>
+<p>Once this is done. The IDE's editor will open. PyCharm gives a 'ready made' hello world python app including a fully functioning virtual environment (pythons way of isolating our project from the rest of your python software; quick tip - if you're ever in the terminal use source <code>.venv/bin/activate</code> to access your environment). Press the Green Triangle to see our Hello World Programme in action.</p>
+<p><img src="img/stepc.png" alt="Press the Green triangle to start the flask enviorment" title="Step C"></p>
+<p>By pressing that green triangle you start the Flask Server. This provides you with an ip address you need to go to to see your website. When you're finished running the code press the red button at the top called top.
+<img src="img/stepd.png" alt="Shows the server in action, the location of the stop button and the IP address of the server in the concole area" title="Step D"></p>
+<p>Here is your website running in the browser.
+<img src="img/stepe.png" alt="Website in Google Chrome show the text 'Hello World!'" title="Step E"></p>
+<p>Now,let's return to PyCharm and add our first class. right-click in PyCharm and select New -> New Python File. call this new file <code>jsonReadWrite</code> and make it a python file.</p>
+<p><img src="img/stepf.png" alt="showing the process of creating a new file in PyCharm" title="Step F"></p>
+<p>Now that we know how to make files and how to operate PyCharm let's start coding!</p>
+<h2 id="setting-up-the-json-reader-and-writer">Setting up the JSON Reader and Writer</h2>
+<h3 id="creating-the-class-and-initislaiser">Creating the Class and its initializer</h3>
+<p>Open <code>jsonReadWrite.py</code>. First, we will import two import libraries for this file, <code>os</code> and <code>json</code>.</p>
+<p>We will then create a python a python class called <code>JsonReadWrite</code>. In the constructor for this class (The <code>__init__</code> function is the constructor of a class in python.), we will use add an argument (called <code>file_name</code> ) to get the location of the file. Also, include <code>self</code> as an argument to allow certain variables to be accessed throughout an instance of this class.</p>
+<p>Next we will create a variable called <code>folder_location</code>. this will use a method in the os library to find the directory the app is running from. After this, we will then declare a variable called <code>self.__file</code> (<code>self</code> to allow us to access it throughout the instance and <code>__</code> to inform python that this variable is private (cannot be accessed outside of the class) as we don't want it changed outside of the class)</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">import</span> os
+<span class="hljs-keyword">import</span> json
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">JsonReadWrite</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, file_name)</span>:</span>
+        folder_location = os.path.dirname(os.path.abspath(__file__))
+        self.__file = os.path.join(folder_location, file_name)
+
+
+
+
+</div></code></pre>
+<h3 id="reading-the-json-file">Reading the JSON File</h3>
+<p>Lets make our method to allow other methods to read from the JSON File. We will call this method <code>__read_json</code> as we want to ecapsulate it from other classes. Due to the computer not knowing if the file exists, and if the file is in the correct format we will need to add few checks. First lets write our basic <code>__read_json</code> method. This method opens the file using the address made in our initailsier, and creates a dictonary array using the <a href="https://www.geeksforgeeks.org/json-load-in-python/"><code>json.load</code></a> function.</p>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__read_json</span><span class="hljs-params">(self)</span>:</span>
+<span class="hljs-keyword">with</span> open(self.__file) <span class="hljs-keyword">as</span> json_file:
+    json_dict_array = json.load(json_file)
+    json_file.close()
+</div></code></pre>
+<p>Although this basic method will work in certain siutations such as when we have a properly formatted JSON file and the file exists it will not work in other situations such as:</p>
+<ol>
+<li>When the file does not exist</li>
+<li>for whatever reason the file is not in the correct format (an list of JSON Records)</li>
+</ol>
+<p>therefore we will need to add a few safeguards to our method. Firstly we will add <a href="https://www.w3schools.com/python/python_try_except.asp"><code>try</code></a> and <code>except</code> statements if their is a <code>FileNotFoundError</code> (where our app can not find a JSON File). We will also have to check to make sure the <code>json_dict_array</code> (the content from JSON File in a form python understands) is a list. If the file is not found we would have to make one using by adding the letter 'x' to the end of an open statement and for both of these situations we will have to return a new empty list to python. One Final exception is also inculded called <code>json.JSONDecodeError</code>; this exception is for if the file is in a JSON List but this is another issue within the JSON file.</p>
+<pre class="hljs"><code><div> <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__read_json</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-keyword">try</span>:
+            <span class="hljs-keyword">with</span> open(self.__file) <span class="hljs-keyword">as</span> json_file:
+                json_dict_array = json.load(json_file)
+                json_file.close()
+                <span class="hljs-keyword">if</span> isinstance(json_dict_array, list):
+                    <span class="hljs-keyword">return</span> json_dict_array
+                <span class="hljs-keyword">return</span> []
+        <span class="hljs-keyword">except</span> FileNotFoundError:
+            <span class="hljs-keyword">with</span> open(self.__file, <span class="hljs-string">"x"</span>) <span class="hljs-keyword">as</span> json_file:
+                json_file.close()
+                <span class="hljs-keyword">return</span> []
+        <span class="hljs-keyword">except</span> json.JSONDecodeError:
+            <span class="hljs-keyword">return</span> []
+
+
+
+</div></code></pre>
+<p>As you can see from the code above it will try to open the file, if it cannot find the file it will create the file and return a new List to reqesting method. You can also see from the <a href="https://www.w3schools.com/python/ref_func_isinstance.asp"><code>isinstance(json_dict_array, list)</code></a> statement that it checks if the content from the JSON File is a list, if it is not it creates a new list. This method ensures that our programme will always have a valid list to read from and will ensure the user should get no errors.</p>
+<h3 id="writing-to-the-json-file">Writing to the JSON File</h3>
+<p>Now that we can read it's time to learn how to write. Lets call this method <code>__write_json</code>, it will ask for a python dictonary called <code>write_dict</code> that will be given as an argument. Then we will get the list of the current dictonary's using <code>__read_json</code> method we just made. (as we calling it from inside this instance of the class we need to add <code>self</code> before <code>__read_json()</code>. We will then append new dictonary item to the list of dictonary's.</p>
+<p>Now we need to convert our list of python dictonary's back into JSON. we do this using the <a href="https://www.geeksforgeeks.org/json-dumps-in-python/"><code>json.dumps</code></a>. we call this using the  <code>updated_json_file</code> variable and then open our JSON file using the open command with the letter 'w' as given as an extra argument to put into write mode and then write the updated file over the existing file.</p>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__write_json</span><span class="hljs-params">(self, write_dict)</span>:</span>
+    json_dict_array = self.__read_json()
+    json_dict_array.append(write_dict)
+    updated_json_file = json.dumps(json_dict_array)
+    
+    <span class="hljs-keyword">with</span> open(self.__file, <span class="hljs-string">'w'</span>) <span class="hljs-keyword">as</span> outfile:
+        outfile.write(updated_json_file)
+        outfile.close()
+</div></code></pre>
+<h2 id="adding-a-todo-list-item-class">Adding a todo list item class.</h2>
+<h3 id="setting-up-the-initaliser">Setting up the initaliser</h3>
+<p>Now that we know how to read and write data now lets prepare our <code>todoListItem.py</code> file. create this in the same way as I showed you eariler for <code>jsonReadWrite</code>. call you new class <code>TodolistItem</code> and in our initilaiser. we want the following.</p>
+<ol>
+<li>a Unique ID, saved as a string. (we will keep this private and allow it to be acessed publicly using a method). We will allow the person to add one at init time but will make provsions if they don;t have one.</li>
+<li>a name of the todo item as a string.</li>
+<li>the date when the item needs to be done for as a datetime</li>
+<li>if the item is started as a boolean.</li>
+<li>an instance of JsonReadWrite</li>
+</ol>
+<p>We can use the <a href="https://docs.python.org/3/library/uuid.html"><code>str(uuid.uuid4())</code></a> method from the <code>UUID</code> library which we will be importing to get a Unique id as a string so that if <code>none</code> is given as a value we can give it a value. We will also import the <code>datetime</code> library as well for us later on.</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">import</span> uuid
+<span class="hljs-keyword">import</span> datetime
+
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TodolistItem</span>:</span>
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, unique_id, todo_item, item_stared, completion_date)</span>:</span>
+        <span class="hljs-keyword">if</span> unique_id <span class="hljs-keyword">is</span> <span class="hljs-literal">None</span>:
+            self.__unique_id = str(uuid.uuid4())
+        <span class="hljs-keyword">else</span>:
+            self.__unique_id = unique_id
+        self.todo_item = todo_item
+        self.item_stared = item_stared
+        self.completion_date = completion_date
+
+
+</div></code></pre>
+<h3 id="showing-the-completation-date-in-a-human-readible-fromat">Showing the completation date in a human readible fromat</h3>
+<p>Now that we can create <code>TodolistItem</code> we should start to add fuctionality. at the momment the <code>completion_date</code> is stored in the default format for a datetime (acording to W3 Schools this is in the format year, month, day, hour, minute, second, and microsecond) - this is really not readible for us humans so we need to make a method to improve upon this. therfore by using the <a href="https://docs.python.org/3/library/datetime.html"><code>strftime</code></a> method from datetime</p>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">completion_date_string</span><span class="hljs-params">(self)</span>:</span>
+    <span class="hljs-keyword">return</span> self.completion_date.strftime(<span class="hljs-string">"%d/%m/%Y at %H:%M"</span>)
+
+</div></code></pre>
+<h3 id="checking-if-the-item-is-overdue">Checking if the item is overdue</h3>
+<p>Our Flask app will need to know if the todo list item is due. Lets make a method to check this. This method, which we will call <code>has_completion_time_passed</code> will compare the current time which it will get from <a href="https://docs.python.org/3/library/datetime.html#datetime.datetime.now"><code>datetime.datetime.now()</code></a> with the completation date. If the completation date is still in the future it will return false otherwise it will return true. To make the code more readible I have called <code>datetime.datetime.now()</code> sysdate and the completation date <code>due_date</code> in local variables.</p>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">has_completion_time_passed</span><span class="hljs-params">(self)</span>:</span>
+    sysdate = datetime.datetime.now()
+    due_date = self.completion_date
+    <span class="hljs-keyword">if</span> due_date &gt; sysdate:
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span>
+    <span class="hljs-keyword">else</span>:
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">True</span>
+</div></code></pre>
+<h3 id="allow-acess-to-the-unique-id">Allow acess to the unique ID</h3>
+<p>Currently are unique id is private, this means it cannot be acessed outside of this class. Let's create a method that will allow us to read this value outside of this class. Firstly crearte the method <code>get_unique_id</code> and simply get it to return the <code>__unique_id</code></p>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get_unique_id</span><span class="hljs-params">(self)</span>:</span>
+    <span class="hljs-keyword">return</span> self.__unique_id
+</div></code></pre>
+<h2 id="improving-the-json-reader-and-writer">Improving the JSON Reader and Writer</h2>
+<p>Now that we have created <code>TodolistItem</code> it is now time to improve our <code>JsonReadWrite</code> class. Please return back to the <code>jsonReadWrite.py</code> class. We need to add 2 new methods</p>
+<ol>
+<li>a Method that turns a <code>TodolistItem</code> into a dictonary item and then saves it to the JSON File.</li>
+<li>a method that the converts the dictonaries from the reader into a Array of TodolistItem's.</li>
+</ol>
+<h3 id="write-the-todolistitem-to-the-json-file">Write the TodolistItem to the JSON File.</h3>
+<p>First lets import our <code>TodolistItem</code>. Do this by adding <code>from todoListItem import TodolistItem</code> just after the last import statement, now within the class create a new method called <code>add_item</code> and add <code>todolist_item</code> as an argument. In this method we will create a dictonary from our <code>TodolistItem</code>. we will then add this dictonary to the json file using <code>__write_json</code> method. We need to store the date as a string due to the fact that pythons JSON library is unable to handle dates</p>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">add_item</span><span class="hljs-params">(self, todolist_item)</span>:</span>
+    item_to_add = {
+        <span class="hljs-string">"uuid"</span>: todolist_item.get_unique_id(),
+        <span class="hljs-string">"item_name"</span>: todolist_item.todo_item,
+        <span class="hljs-string">"itemStared"</span>: todolist_item.item_stared,
+        <span class="hljs-string">"date"</span>: todolist_item.completion_date_string()
+    }
+    self.__write_json(item_to_add)
+</div></code></pre>
+<h3 id="reading-the-todolistitem-item">Reading the TodolistItem Item</h3>
+<p>We now want to be able convert the contents of our JSON File to an array of <code>TodolistItem</code>'s. We will first read the json as list of dictonarys using <code>self.__read_json()</code> method. We will then create a list of <code>TodolistItem</code>'s, this will be empty for now. Now we need to convert our dictonary's to <code>TodolistItem</code>'s.</p>
+<p>Using a for loop we will convert each dictonary to a <code>TodolistItem</code>. We will create the TodolistItems in the usual way but we will need to convert the datetime from the dictonary which is currently a string back into a proper datetime, we can do this using the <a href="https://docs.python.org/3/library/datetime.html#strftime-strptime-behavior"><code>datetime.strptime</code></a> method with providing the same format converted our datetime to string eariler in the tutorial.</p>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get_list</span><span class="hljs-params">(self)</span>:</span>
+    dict_list_of_items = self.__read_json()
+    todo_list_item_list_of_items = []
+    <span class="hljs-keyword">if</span> len(dict_list_of_items) &gt; <span class="hljs-number">0</span>:
+        <span class="hljs-keyword">for</span> dict_item <span class="hljs-keyword">in</span> dict_list_of_items:
+            date_as_datetime = datetime.strptime(dict_item[<span class="hljs-string">"date"</span>], <span class="hljs-string">"%d/%m/%Y at %H:%M"</span>)
+            todo_item = TodolistItem(dict_item[<span class="hljs-string">"uuid"</span>], dict_item[<span class="hljs-string">"item_name"</span>], dict_item[<span class="hljs-string">"itemStared"</span>],date_as_datetime)
+            todo_list_item_list_of_items.append(todo_item)
+        <span class="hljs-keyword">return</span> todo_list_item_list_of_items
+
+</div></code></pre>
+<h2 id="time-for-flask">Time for Flask</h2>
+<h3 id="creating-the-html-template">Creating the HTML Template</h3>
+<p>It is time to make the todo list's website. Before we add our JSON code to our file lets create the template. First select templates, the press new new and select HTML File. Call this file <code>todo.html</code> and press HTML 5 from the options. PyCharm will create a bolierplate basic html page for us.
+<img src="img/stepg.png" alt="Image informs the user how to create a HTML File" title="Step A"></p>
+<p>Now that the template is created we now have to get it ready for the todo list. First we will replace the title with the name of our product. Todo List. Then we will create a table inside the body tags. this table will show our todolist. In html we declare the the names of the headers will be surronded by <code>&lt;th&gt;</code>. Also these headers will be held in  the first table row  (<code>&lt;tr&gt;</code>) in the table. every table row after the headers will contain data surronded by <code>&lt;td&gt;</code>. Below is the HTML file with a table with some tempory data.</p>
+<pre class="hljs"><code><div><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">"en"</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">"UTF-8"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Todo List<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>Todo List<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">table</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>Todo Item Name<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>Due Date<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>Started<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>Register to Vote<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>28/01/2022 19:40<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>False<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>Go to Cinema<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>01/02/2022 11:00<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>True<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+
+<span class="hljs-tag">&lt;/<span class="hljs-name">table</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</div></code></pre>
+<p>Now lets make this template aviable through our flask server. Firstly delete the <code>hello_world</code> method Flask made for us and then create a new method called <code>main_method</code> write under <code>app.route('/')</code>. For now get this method to return the rendered template of todo.html (we will add more to this later on). We will also need to import <code>render_template</code> from Flask</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">from</span> flask <span class="hljs-keyword">import</span> Flask,render_template
+<span class="hljs-comment">#...</span>
+<span class="hljs-meta">@app.route('/')</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">main_method</span><span class="hljs-params">()</span>:</span>
+    <span class="hljs-keyword">return</span> render_template(<span class="hljs-string">'todo.html'</span>)
+</div></code></pre>
+<p>Run your project I go to the web page and you will see the html page (their is currently no styling but we will fix this later).</p>
+<h3 id="adding-python-and-variables-to-the-html-template">Adding Python and variables to the html template.</h3>
+<p>Now that we have a html page with a table we can start adding our python code to the html page. Delete the last record in the html table and around the second record put <code>{%for record in Items%}</code> the curly brackets (braces) tell python to treat this as python code. at the end of record put <code>{%endfor%}</code> which ends the for loop. This for loop will go through all the <code>TodolistItem</code>'s in the list given to the file. In each of the <code>&lt;td&gt;</code>'s we will write the variable to be shown in that area i.e <code>&lt;td&gt;{{record.todo_item}}&lt;/td&gt;</code>. The updated table is below:</p>
+<pre class="hljs"><code><div><span class="hljs-tag">&lt;<span class="hljs-name">table</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>Todo Item Name<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>Due Date<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>Started<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+    {%for record in Items%}
+  <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>{{record.todo_item}}<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>{{record.completion_date_string()}}<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>{{record.item_stared}}<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+{%endfor%}
+
+
+<span class="hljs-tag">&lt;/<span class="hljs-name">table</span>&gt;</span>
+</div></code></pre>
+<p>Now that we have done that we have to make provide the <code>TodolistItem</code>'s to our Flask app. First import the following libraries</p>
+<ol>
+<li><code>from todoListItem import TodolistItem</code></li>
+<li><code>import datetime</code></li>
+<li><code>from jsonReadWrite import JsonReadWrite</code></li>
+</ol>
+<p>outside of the methods create a variable called <code>reader</code> and set the reader to be equal to <code>JsonReadWrite(&quot;todolist.json&quot;)</code>. Also create a add an argument called <code>Items</code> in the <code>render_template</code> command which will be equal to <code>reader.get_list()</code>.</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">import</span> datetime
+<span class="hljs-keyword">from</span> flask <span class="hljs-keyword">import</span> Flask, render_template
+<span class="hljs-keyword">from</span> todoListItem <span class="hljs-keyword">import</span> TodolistItem
+<span class="hljs-keyword">from</span> jsonReadWrite <span class="hljs-keyword">import</span> JsonReadWrite
+
+app = Flask(__name__)
+
+
+
+reader = JsonReadWrite(<span class="hljs-string">"todolist.json"</span>)
+
+<span class="hljs-meta">@app.route('/')</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">main_method</span><span class="hljs-params">()</span>:</span>
+    <span class="hljs-keyword">return</span> render_template(<span class="hljs-string">'todo.html'</span>, Items=reader.get_list())
+
+
+<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">'__main__'</span>:
+    app.run()
+
+</div></code></pre>
+<p>If you run this code now you will make two obserations.</p>
+<ol>
+<li>A File called <code>todolist.json</code> has been created</li>
+<li>Their is no content in the todo list, only headers.</li>
+</ol>
+<p><img src="img/steph.png" alt="Flask Website showing only headers, no content" title="Step H"></p>
+<h3 id="how-do-we-add-an-item-to-the-list">How do we add an item to the list?</h3>
+<p>Good Question, to add content we will need to make an input page. Create a new HTML file in the same way as before and call it <code>additem.html</code>. Replace the title with the words 'add new item' and create a HTML form. This form will send a post request to the '/addNewItem' page which we will create next when the user presses the submit button called 'add to form' . This class includes a <code>&quot;datetime-local&quot;</code> input type which is now supported by all the major browers but may cause issues with legacy broswer's such as Internet Explorer. I have also included a cancel button if the user wants to cancel the new item creation.</p>
+<pre class="hljs"><code><div><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">"en"</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">"UTF-8"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Add new item<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>Add new Item.<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">action</span>=<span class="hljs-string">"/addNewItem"</span> <span class="hljs-attr">method</span> = <span class="hljs-string">"POST"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Todo Item Name <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span> = <span class="hljs-string">"text"</span> <span class="hljs-attr">name</span> = <span class="hljs-string">"todo_item"</span> /&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Due Date <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span> = <span class="hljs-string">"datetime-local"</span> <span class="hljs-attr">name</span> = <span class="hljs-string">"allocatedTime"</span> /&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+
+
+            <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span> = <span class="hljs-string">"submit"</span> <span class="hljs-attr">value</span> = <span class="hljs-string">"add to form"</span> /&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+
+        <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"/"</span> <span class="hljs-attr">target</span>=<span class="hljs-string">"_blank"</span>&gt;</span>Cancel addition<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</div></code></pre>
+<p>Now lets create the method for '/addNewItem' page. I will call this <code>add_new_item</code>. This page, which will accept both GET (asking for info) and POST (giving us info) request's. add <code>request</code> to the Flask import line and create a new <code>app.route()</code> with moth POST AND GET methods. Now in the <code>add_new_item</code> method itself we will use the request method to check if the request is POST or GET, if it is POST we will add the records to the database and redirect them back to the main page otherwise we will show the additem page,</p>
+<pre class="hljs"><code><div><span class="hljs-meta">@app.route('/addNewItem', methods=['POST', 'GET'])</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">add_new_item</span><span class="hljs-params">()</span>:</span>
+    <span class="hljs-keyword">if</span> request.method == <span class="hljs-string">'POST'</span>:
+        date_to_complete = datetime.datetime.strptime(request.form.get(<span class="hljs-string">"allocatedTime"</span>), <span class="hljs-string">"%Y-%m-%dT%H:%M"</span>)
+        reader.add_item(TodolistItem(<span class="hljs-literal">None</span>, (request.form.get(<span class="hljs-string">"todo_item"</span>)), <span class="hljs-literal">False</span>, date_to_complete))
+        <span class="hljs-keyword">return</span> render_template(<span class="hljs-string">'redirect.html'</span>)
+    <span class="hljs-keyword">else</span>:
+        <span class="hljs-keyword">return</span> render_template(<span class="hljs-string">'additem.html'</span>)
+</div></code></pre>
+<p>As you can see from here we're having to conver the allocatedTime from its native string into a DateTime instance, The correct format for this is <code>%Y-%m-%dT%H:%M</code>. Once this is done we will create a todolist item in its default state (no unique id and not currently started). We will also make a redirect.html page as shown below which will redirect us back to the home page. The Code for the redirect page is below.</p>
+<pre class="hljs"><code><div><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">"en"</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">"UTF-8"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">http-equiv</span>=<span class="hljs-string">"Refresh"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"0; url='/'"</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>DIRECTING<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">H1</span>&gt;</span>Creation SUCESSFULL!!<span class="hljs-tag">&lt;/<span class="hljs-name">H1</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</div></code></pre>
+<p>Now to finish this step add the following link to the <code>todo.html</code> page. Below this is a picture of the product at this time</p>
+<pre class="hljs"><code><div><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"/addNewItem"</span> <span class="hljs-attr">target</span>=<span class="hljs-string">"_blank"</span>&gt;</span>Add New Item<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+</div></code></pre>
+<p><img src="img/stepi.png" alt="Flask Website showing only headers, with user added content" title="Step i"></p>
+<h3 id="lets-build-on-the-foundations">Lets build on the foundations.</h3>
+<p>Now that we have built the foundations it time to improve on this. You'll remember at the start of this how to guide we agreed to do three things:</p>
+<ol>
+<li>Add new items</li>
+<li>delete items</li>
+<li>star items</li>
+</ol>
+<p>We can now add new items but we now need to be able to delete items and star items.</p>
+<p>Lets first learn how to star items. To star items we will need to add a button to the table in <code>todo.html</code> to toggle between stared and non stared status. Add an extra comlum to the table and name the header 'toggle' and add and extra <code>&lt;td&gt;</code> which will send the UUID it do our python file.</p>
+<pre class="hljs"><code><div><span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">action</span>=<span class="hljs-string">"/"</span> <span class="hljs-attr">method</span>=<span class="hljs-string">"post"</span>&gt;</span>
+     <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"toggle"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"{{ record.get_unique_id() }}"</span>&gt;</span>Toggle<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+</div></code></pre>
+<p>We will also need to allow post requests for this page in <code>app.py</code>. Add the methods to allow both POST AND GET and Methods. All we need to do now is to update the started status.</p>
+<pre class="hljs"><code><div><span class="hljs-meta">@app.route('/', methods=['POST', 'GET'])</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">main_method</span><span class="hljs-params">()</span>:</span>
+    <span class="hljs-keyword">if</span> request.method == <span class="hljs-string">'POST'</span>:
+        <span class="hljs-keyword">return</span> render_template(<span class="hljs-string">'redirect.html'</span>)
+    <span class="hljs-keyword">else</span>:
+        <span class="hljs-keyword">return</span> render_template(<span class="hljs-string">'todo.html'</span>, Items=reader.get_list())
+</div></code></pre>
+<p>To change the started status we will need to create a new method in <code>jsonReadWrite.py</code> called <code>change_toggle</code> this will go through the json file in its native dictonary form and change the toggle status on the offending item. It will then convert that dictonary back into json and overwrite the current file.</p>
+<pre class="hljs"><code><div> <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">change_toggle</span><span class="hljs-params">(self, items_uuid)</span>:</span>
+        json_dict_array = self.__read_json()
+
+        <span class="hljs-keyword">for</span> item <span class="hljs-keyword">in</span> json_dict_array:
+            <span class="hljs-keyword">if</span> items_uuid == item[<span class="hljs-string">"uuid"</span>]:
+                <span class="hljs-keyword">if</span> item[<span class="hljs-string">"itemStared"</span>]:
+                    item[<span class="hljs-string">"itemStared"</span>] = <span class="hljs-literal">False</span>
+                <span class="hljs-keyword">else</span>:
+                    item[<span class="hljs-string">"itemStared"</span>] = <span class="hljs-literal">True</span>
+                updated_json_file = json.dumps(json_dict_array)
+
+                <span class="hljs-keyword">with</span> open(self.__file, <span class="hljs-string">'w'</span>) <span class="hljs-keyword">as</span> outfile:
+                    outfile.write(updated_json_file)
+                    outfile.close()
+                <span class="hljs-keyword">break</span>
+</div></code></pre>
+<p>add this just before <code>return render_template('redirect.html')</code></p>
+<pre class="hljs"><code><div>reader.change_toggle((request.form.get(<span class="hljs-string">"toggle"</span>)))
+</div></code></pre>
+<h2 id="first-challange">First Challange</h2>
+<p>I have shown you how to toggle the stared status now try to use your new knoweldge to add a delete button which removes an item from the todo list. I will include the code below if you really need to see it but I have a few tips.</p>
+<ol>
+<li>Create a new page and function in the flask file</li>
+<li>Adapt the insturctions for togging to delete</li>
+<li>Reserach W3 Schools if you're stuck or look at the code below</li>
+</ol>
+<p><code>Extra Code in app.py</code></p>
+<pre class="hljs"><code><div><span class="hljs-meta">@app.route('/delete', methods=['POST'])</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">delete_item</span><span class="hljs-params">()</span>:</span>
+    reader.delete_item(request.form.get(<span class="hljs-string">"delete"</span>))
+    print((request.form.get(<span class="hljs-string">"delete"</span>)))
+    <span class="hljs-keyword">return</span> render_template(<span class="hljs-string">'redirect.html'</span>)
+</div></code></pre>
+<p><code>Extra Code in the JsonReadWrite Class</code></p>
+<pre class="hljs"><code><div>   <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">delete_item</span><span class="hljs-params">(self, items_uuid)</span>:</span>
+        json_dict_array = self.__read_json()
+        counter = <span class="hljs-number">0</span>
+        <span class="hljs-keyword">while</span> counter &lt; len(json_dict_array):
+            item = json_dict_array[counter]
+            <span class="hljs-keyword">if</span> item[<span class="hljs-string">"uuid"</span>] == items_uuid:
+                json_dict_array.pop(counter)
+                updated_json_file = json.dumps(json_dict_array)
+                <span class="hljs-keyword">with</span> open(self.__file, <span class="hljs-string">'w'</span>) <span class="hljs-keyword">as</span> outfile:
+                    outfile.write(updated_json_file)
+                    outfile.close()
+                <span class="hljs-keyword">break</span>
+            <span class="hljs-keyword">else</span>:
+                counter = counter + <span class="hljs-number">1</span>
+</div></code></pre>
+<p><code>Extra Code in todo.html</code></p>
+<pre class="hljs"><code><div><span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">action</span>=<span class="hljs-string">"/delete"</span> <span class="hljs-attr">method</span>=<span class="hljs-string">"post"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"delete"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"{{ record.get_unique_id() }}"</span>&gt;</span>Delete<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+</div></code></pre>
+<h2 id="style">Style</h2>
+<p>Create a new file called <code>style.css</code> (CSS is not an option in PyCharm, select 'stylesheet' instead and then select CSS).</p>
+<p>The style part of the tutorial was adapted from <a href="https://www.w3schools.com/html/html_tables.asp">W3Schools</a>.</p>
+<h3 id="decide-on-the-table-settings">decide on the table settings</h3>
+<p>When creating your style you need to decide what font you for your table. W3 Schools have a list of <a href="https://www.w3schools.com/cssref/css_websafe_fonts.asp">Web Safe Fonts</a> that you can use. I choose Verdana.</p>
+<pre class="hljs"><code><div><span class="hljs-selector-tag">table</span> {
+  <span class="hljs-attribute">font-family</span>: Verdana, sans-serif;
+  
+}
+</div></code></pre>
+<p>I have a look round the <a href="https://www.w3schools.com">W3 Schools</a> Website to learn how to make  your perfect design.</p>
+<h3 id="add-your-css-to-the-html-files">add your CSS to the html files</h3>
+<p>To add you css to the html files simply add this to the head of all the html files.</p>
+<pre class="hljs"><code><div><span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"style.css"</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> &gt;</span>
+</div></code></pre>
+<h2 id="add-to-python-anywhere">Add to Python Anywhere</h2>
+<p>Now that we have a working application it's time to show it to the world!.</p>
+<ol>
+<li> <a href="https://eu.pythonanywhere.com/ ">Go to Python Anywhere</a> and press 'pricing and signup'
+</br>
+</br>
+
+<img src="img/pa/img1.png" alt="Press Pricing and signup" title="Step 1"></li>
+<li>Press Create a Beginner Account
+</br>
+</br>
+
+<img src="img/pa/img2.png" alt="Press create a account" title="Step 2"></li>
+<li>Go through account opening hten press view browse files
+</br>
+</br>
+
+<img src="img/pa/img3.png" alt="open web files" title="Step 3"></li>
+<li>Upload your files using the upload files button and create directory's using the enter new directory name field.</li>
+</br>
+
+<li>return to the last page and select open web tab.
+</br>
+</br>
+
+<img src="img/pa/img5.png" alt="open web app" title="Step 5"></li>
+<li>Select Flask</li>
+</br>
+
+<li>Select Python 3.7</li>
+</br>
+
+<li>Select a page that is not an actual page to be your main page, don't wory, we will fix this in a minute.
+</br>
+</br>
+
+    <img src="img/pa/img8.png" alt="Press create a account" title="Step 8"></li>
+<li>open your wsji file.</li>
+</br>
+
+
+<li>change the last line to open <code>from app</code> and change the directory to your apps directory.
+</br>
+</br>
+
+    <img src="img/pa/img10.png" alt="Final Image" title="Step 10"></li>
+</ol>
+<p>This part of the tutorial was partly based on this tutorial by <a href="https://help.pythonanywhere.com/pages/Flask/">python anywhere</a></p>
+<h2 id="furthur-challanges">Further Challanges</h2>
+<p>I have added some ideas below of what you can do to improve your project</p>
+<ol>
+<li>Allowing editing of items.</li>
+<li>adding your project to github and learn how git works.</li>
+<li>Send Email Reminders for overdue items</li>
+<li>Display overdue items in different colour</li>
+<li>introduce catergories</li>
+</ol>
+<h2 id="refernces">Links to useful websites</h2>
+
+
+<a href="https://flask.palletsprojects.com/en/2.0.x/">https://flask.palletsprojects.com/en/2.0.x/</a>
+</br>
+<a href="https://www.educative.io/edpresso/a-simple-handy-guide-to-flask">https://www.educative.io/edpresso/a-simple-handy-guide-to-flask</a>
+</br>
+
+<a href="https://www.educative.io/edpresso/a-simple-handy-guide-to-flask">https://www.educative.io/edpresso/a-simple-handy-guide-to-flask/a>
+</br>
+
+    <a href="https://www.w3schools.com/python">https://www.w3schools.com/python</a>
+
+</div>
+<footer class="blog-footer">
+<p>
+        This how to guide was written by Jack Delaney in 2022 for the CSC1028 module and published on the
+        04/02/2022. The source code for this project is on my Github.
+    </p>
+</footer>
+</body>
+</html>
